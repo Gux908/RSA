@@ -27,9 +27,19 @@ void displayManu(void)
     std::cout << "|    d-> RSA dekodowanie                  |" << std::endl;
     std::cout << "|    t-> Test kodowania i dekodowania RSA |" << std::endl;
     std::cout << "|    l-> Wczytaj plik WAV                 |" << std::endl;
+    std::cout << "|    p-> Wyœwietl czesc zawartosci pliku  |" << std::endl;
     std::cout << "|    s-> Zapisz do pliku WAV              |" << std::endl;
     std::cout << "|    q-> Quit                             |" << std::endl;
     std::cout << "==========================================" << std::endl;
+}
+
+void printExampleData(data_t* Data, const int sampels_amount)
+{
+	std::cout << "First " << sampels_amount << " sampels :" << std::endl;
+	for (int i = 0; i < sampels_amount; i++)
+	{
+		std::cout << Data[i] << " ";
+	}
 }
 
 void Menu()
@@ -196,6 +206,13 @@ void Menu()
             break;
         case 'q':
             return;
+		case 'p':
+		{
+			std::cout << "Ilosc danych przykladowych:\n";
+			int samplesAmount=0;
+			std::cin >> samplesAmount;
+			printExampleData(dataWAV, samplesAmount);
+		}
         default:
             std::cout << "Wybierz coœ innego\n";
             break;
